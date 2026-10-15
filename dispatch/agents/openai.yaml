@@ -1,0 +1,5 @@
+interface:
+  display_name: "Dispatch"
+  short_description: "Run frontier tickets in parallel"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,77 @@
+# gem-skills
+
+My agent workflow, packaged as [Agent Skills](https://agentskills.io): plain `SKILL.md` folders that work in Claude Code, OpenCode, omp, pi and Codex. All skills are user-invoked: none of them cost context until I call one.
+
+## The loop
+
+```
+agent-ready      once per repo: verify command, git + agent hooks, lean AGENTS.md
+      │
+plan-tonight     idea → grilled spec → tracer-bullet tickets (in the vault)
+      │
+dispatch         night: ≤3 parallel worktree agents   day: unattended runs
+ship-ticket      one ticket by hand: red → green → PR
+      │
+fresh-review     spec / risk / design review in fresh context → I merge
+      │
+wrap             lessons → guardrails, handoff, tomorrow's dispatch
+```
+
+Lost? `gem` reads the current state and says which one to run.
+
+## Calling a skill
+
+| Agent | Syntax | Hidden from auto-invocation by |
+|---|---|---|
+| Claude Code | `/plan-tonight` | `disable-model-invocation: true` |
+| OpenCode | `/plan-tonight` | `metadata.opencode/slash` + `opencode/autoinvoke: "false"` |
+| omp, pi | `/skill:plan-tonight` | `hide: true` |
+| Codex | `$plan-tonight` | `agents/openai.yaml` → `allow_implicit_invocation: false` |
+
+Each agent ignores the other agents' frontmatter keys.
+
+## Install
+
+Pick one method per machine; mixing them puts two installs on the same paths.
+
+**Machine where I edit the skills** (any machine I code on, since `wrap` edits and commits skills):
+
+```sh
+git clone git@github.com:joshuagemvicente/gem-skills.git ~/projects/gem-skills
+cd ~/projects/gem-skills && ./install.sh
+```
+
+`install.sh` symlinks each skill into `~/.agents/skills` (read by OpenCode, omp, Codex), then into `~/.claude/skills` and `~/.pi/agent/skills`, so edits here reach every agent immediately.
+
+**Machine that only uses them**, via the [skills CLI](https://github.com/vercel-labs/skills):
+
+```sh
+npx skills add joshuagemvicente/gem-skills -g -s '*' -a claude-code opencode pi codex -y
+```
+
+## Update
+
+| Installed with | Update with |
+|---|---|
+| `install.sh` | `git pull`, plus `./install.sh` if a skill was added or renamed |
+| `npx skills` | `npx skills update -g` |
+
+Then start a new agent session; agents read skills when a session starts.
+
+On first use a skill asks for the Obsidian vault path and stores it in `~/.config/gem/vault`. Vault layout, ticket format, status rules and the parallel-agent fallbacks live in [`gem/CONVENTIONS.md`](gem/CONVENTIONS.md).
+
+## Portability rules for edits
+
+- Repo instructions go in `AGENTS.md`; `CLAUDE.md` is just `@AGENTS.md`.
+- Reach sibling files by relative path (`../gem/CONVENTIONS.md`), never an agent's home directory.
+- Name a capability, then give agent-specific tools as branches with a portable fallback (git hooks, `git worktree`, headless CLI runs).
+- New skill: copy an existing folder so the frontmatter and `agents/openai.yaml` come with it, then run `./install.sh`.
+
+## Changing a skill
+
+| Change | What to do |
+|---|---|
+| Edit a skill's text | Save the file, start a new agent session, then commit and push so other machines can update. |
+| Add, rename or delete a skill | Run `./install.sh` (delete the old symlinks by hand after a rename or delete), then commit and push. |
+
+`wrap` edits these files when the workflow itself was wrong. Commit those edits here so improvements stick.

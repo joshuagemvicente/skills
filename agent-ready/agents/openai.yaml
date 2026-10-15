@@ -1,0 +1,5 @@
+interface:
+  display_name: "Agent Ready"
+  short_description: "Set up verify, hooks and AGENTS.md"
+policy:
+  allow_implicit_invocation: false

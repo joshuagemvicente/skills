@@ -1,0 +1,5 @@
+interface:
+  display_name: "Plan Tonight"
+  short_description: "Idea to spec to tracer-bullet tickets"
+policy:
+  allow_implicit_invocation: false

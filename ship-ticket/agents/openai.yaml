@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ship Ticket"
+  short_description: "Implement one ticket red to green"
+policy:
+  allow_implicit_invocation: false

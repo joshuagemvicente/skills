@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wrap"
+  short_description: "Lessons, handoff, tomorrow's dispatch"
+policy:
+  allow_implicit_invocation: false

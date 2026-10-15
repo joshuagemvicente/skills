@@ -1,0 +1,5 @@
+interface:
+  display_name: "Gem"
+  short_description: "Show the next step in the build loop"
+policy:
+  allow_implicit_invocation: false
