@@ -1,0 +1,5 @@
+interface:
+  display_name: "PR Preflight"
+  short_description: "Make a PR approvable on first review"
+policy:
+  allow_implicit_invocation: false

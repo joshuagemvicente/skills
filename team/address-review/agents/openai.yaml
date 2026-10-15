@@ -1,0 +1,5 @@
+interface:
+  display_name: "Address Review"
+  short_description: "One complete fix cycle per return"
+policy:
+  allow_implicit_invocation: false

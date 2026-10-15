@@ -1,0 +1,5 @@
+interface:
+  display_name: "Estimate Story"
+  short_description: "Calibrated estimates and re-forecasts"
+policy:
+  allow_implicit_invocation: false

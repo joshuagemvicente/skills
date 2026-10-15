@@ -1,0 +1,5 @@
+interface:
+  display_name: "Dev KPIs"
+  short_description: "Indicator scoreboard and next step"
+policy:
+  allow_implicit_invocation: false

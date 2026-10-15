@@ -67,6 +67,27 @@ On first use a skill asks for the Obsidian vault path and stores it in `~/.confi
 - Name a capability, then give agent-specific tools as branches with a portable fallback (git hooks, `git worktree`, headless CLI runs).
 - New skill: copy an existing folder so the frontmatter and `agents/openai.yaml` come with it, then run `./install.sh`.
 
+## Team skills
+
+A separate set in [`team/`](team/), for working on a team where PRs go through a reviewer and QA. Not installed by default.
+
+| Skill | When |
+|---|---|
+| `dev-kpis` | Scoreboard for first-pass approval, revision-ceiling compliance, secure-checklist rate and on-time delivery; says what to fix next |
+| `estimate-story` | Commit to a calibrated estimate, re-forecast halfway, log the actual |
+| `pr-preflight` | Before every review request: checks, acceptance evidence, secure checklist, reviewer and QA passes |
+| `secure-review` | Apply the secure coding checklist item by item and output it completed |
+| `address-review` | A PR comes back: one complete fix cycle, replies drafted, preflight re-run |
+
+Install:
+
+```sh
+./install.sh --team        # or --all for both sets
+npx skills add https://github.com/joshuagemvicente/gem-skills/tree/main/team -g -s '*' -a claude-code opencode pi codex -y
+```
+
+Team specifics (reviewer, revision ceiling, checklist path, targets) and the evidence ledger live in `~/.config/gem/team/` on each machine, never in this repo. The first team skill you run asks for them.
+
 ## Changing a skill
 
 | Change | What to do |
