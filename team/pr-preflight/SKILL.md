@@ -25,7 +25,7 @@ The bar: **you can't name one comment the reviewer is likely to leave.**
 
 4. **Secure checklist.** Follow `../secure-review/SKILL.md` in full on this diff. Every item ends Pass or N/A with evidence; any Fail is fixed before moving on.
 
-5. **Review with the reviewer's eyes.** In fresh context (a subagent if your agent has one, otherwise a deliberate second pass), review the diff as a strict reviewer would: naming, error handling, edge cases, test quality, consistency with the surrounding patterns, needless complexity. Then explicitly check **every recurring category** in the ledger's Return reasons; those are this reviewer's known preferences.
+5. **Review with the reviewer's eyes.** If `../bug-hunt/SKILL.md` is installed, run it at `standard` depth first and fix every Critical and Major it confirms. Then, in fresh context (a subagent if your agent has one, otherwise a deliberate second pass), review the diff as a strict reviewer would: naming, error handling, edge cases, test quality, consistency with the surrounding patterns, needless complexity. Then explicitly check **every recurring category** in the ledger's Return reasons; those are this reviewer's known preferences.
 
 6. **Test with QA's eyes.** QA returns count against the revision ceiling too. Exercise the paths QA will try: empty, invalid and boundary inputs, permissions and roles, error messages, loading and failure states, the responsive layouts if it's UI. Fix what breaks.
 

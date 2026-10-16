@@ -1,0 +1,5 @@
+interface:
+  display_name: "Bug Hunt"
+  short_description: "Find bugs and edge cases with proof"
+policy:
+  allow_implicit_invocation: false

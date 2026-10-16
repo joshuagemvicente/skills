@@ -21,7 +21,7 @@ If this session wrote the code under review and your agent has no subagent tool,
 
 2. **Review on three axes.** Run each axis as its own fresh reviewer: subagents launched in one turn if your agent has them, otherwise headless runs (see Parallel agents in CONVENTIONS), otherwise one axis at a time in this fresh session. Each returns findings as `file:line`, the claim, and a concrete failure scenario.
    - **Spec**: every Done-when criterion gets met / not met with evidence. Anything in the diff the ticket didn't ask for.
-   - **Risk**: bugs on edge cases and error paths; authorization on every new endpoint or action; input validation; secrets; migration safety (reversible? safe on existing rows?); jobs and webhooks (idempotent, safe to retry, safe to run twice concurrently); money arithmetic.
+   - **Risk**: the reviewer follows `../bug-hunt/SKILL.md` (depth `deep` for `risk: high` tickets, `standard` otherwise) and returns its findings. It covers bugs on edge cases and error paths; authorization on every new endpoint or action; input validation; secrets; migration safety (reversible? safe on existing rows?); jobs and webhooks (idempotent, safe to retry, safe to run twice concurrently); money arithmetic.
    - **Design**: fits the existing seams and patterns; names match `CONTEXT.md`; tests exercise behaviour through the seam rather than internals; no dead code or speculative abstraction.
 
 3. **Refute.** For every finding, try to disprove it against the actual code. Keep only findings that survive. Rank them: **blocker**, **should-fix**, **nit**.

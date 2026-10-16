@@ -19,6 +19,8 @@ wrap             lessons → guardrails, handoff, tomorrow's dispatch
 
 Lost? `gem` reads the current state and says which one to run.
 
+`bug-hunt` works on any PR or diff, inside or outside the loop: a CodeRabbit-style review with a walkthrough, cross-file impact, systematic edge cases from a catalog, and only findings proven by a concrete failing input. `--post` sends it to the PR as one GitHub review with inline, one-click suggestions. `fresh-review` and the team `pr-preflight` use it when it's installed.
+
 ## Calling a skill
 
 | Agent | Syntax | Hidden from auto-invocation by |
