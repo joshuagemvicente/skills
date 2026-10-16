@@ -1,4 +1,4 @@
-# gem-skills
+# skills
 
 My agent workflow, packaged as [Agent Skills](https://agentskills.io): plain `SKILL.md` folders that work in Claude Code, OpenCode, omp, pi and Codex. All skills are user-invoked: none of them cost context until I call one.
 
@@ -39,8 +39,8 @@ Pick one method per machine; mixing them puts two installs on the same paths.
 **Machine where I edit the skills** (any machine I code on, since `wrap` edits and commits skills):
 
 ```sh
-git clone git@github.com:joshuagemvicente/gem-skills.git ~/projects/gem-skills
-cd ~/projects/gem-skills && ./install.sh
+git clone git@github.com:joshuagemvicente/skills.git ~/projects/skills
+cd ~/projects/skills && ./install.sh
 ```
 
 `install.sh` symlinks each skill into `~/.agents/skills` (read by OpenCode, omp, Codex), then into `~/.claude/skills` and `~/.pi/agent/skills`, so edits here reach every agent immediately.
@@ -48,7 +48,7 @@ cd ~/projects/gem-skills && ./install.sh
 **Machine that only uses them**, via the [skills CLI](https://github.com/vercel-labs/skills):
 
 ```sh
-npx skills add joshuagemvicente/gem-skills -g -s '*' -a claude-code opencode pi codex -y
+npx skills add joshuagemvicente/skills -g -s '*' -a claude-code opencode pi codex -y
 ```
 
 ## Update
@@ -85,7 +85,7 @@ Install:
 
 ```sh
 ./install.sh --team        # or --all for both sets
-npx skills add https://github.com/joshuagemvicente/gem-skills/tree/main/team -g -s '*' -a claude-code opencode pi codex -y
+npx skills add https://github.com/joshuagemvicente/skills/tree/main/team -g -s '*' -a claude-code opencode pi codex -y
 ```
 
 Team specifics (reviewer, revision ceiling, checklist path, targets) and the evidence ledger live in `~/.config/gem/team/` on each machine, never in this repo. The first team skill you run asks for them.

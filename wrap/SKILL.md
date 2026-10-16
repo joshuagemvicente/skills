@@ -21,10 +21,10 @@ The compounding step. Every correction you made tonight should be one you never 
 3. **Fix each lesson at the strongest rung** that can hold it:
    1. a **guardrail**: lint rule, test, type, or git hook; deterministic beats remembered, and it binds every agent
    2. an `AGENTS.md` line: a navigation pointer, or a rule stated as the positive target
-   3. an edit to a gem skill in `~/projects/gem-skills/`, when the workflow itself was wrong
+   3. an edit to a gem skill in `~/projects/skills/`, when the workflow itself was wrong
    4. a line in the vault's `lessons.md`, for judgement calls nothing above can hold
 
-   A lesson that changes no future behaviour gets dropped. Propose the fixes as a list, apply the approved ones, and commit skill edits in the gem-skills repo.
+   A lesson that changes no future behaviour gets dropped. Propose the fixes as a list, apply the approved ones, and commit skill edits in the skills repo.
 
 4. **Write the handoff** to `handoffs/YYYY-MM-DD-<slug>.md`:
    - **Where it stands**: one line per active ticket.
